@@ -1,13 +1,19 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import axios from 'axios';
+import { environment } from '../environment/environment';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'school-test-checker-web';
+    public title = 'school-test-checker-web';
+
+    public async login() {
+        await axios.get(`${environment.apiUrl}/sanctum/csrf-cookie`);
+        await axios.post(`${environment.apiUrl}/login`, {
+            login: 'enzo',
+            password: 'teste'
+        });
+    }
 }
