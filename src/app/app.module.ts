@@ -4,6 +4,9 @@ import { RouterOutlet } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { BrowserModule } from "@angular/platform-browser";
+import { LoginModule } from "./pages/login/login.module";
+import { HomeModule } from "./pages/home/home.module";
+import { DefaultPageContainerModule } from "./pages/default-page-container/default-page-container.module";
 
 @NgModule({
     imports: [
@@ -11,6 +14,9 @@ import { BrowserModule } from "@angular/platform-browser";
         RouterOutlet,
         CommonModule,
         AppRoutingModule,
+        // LoginModule,
+        // HomeModule,
+        DefaultPageContainerModule
     ],
     declarations: [AppComponent],
     bootstrap: [AppComponent]

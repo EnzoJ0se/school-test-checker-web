@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import axios from 'axios';
-import { environment } from '../environment/environment';
+import { environment } from '../environments/environment';
 
 @Component({
     selector: 'app-root',
@@ -9,11 +9,8 @@ import { environment } from '../environment/environment';
 export class AppComponent {
     public title = 'school-test-checker-web';
 
-    public async login() {
-        await axios.get(`${environment.apiUrl}/sanctum/csrf-cookie`);
-        await axios.post(`${environment.apiUrl}/login`, {
-            login: 'enzo',
-            password: 'teste'
-        });
+    public constructor() {
+        axios.defaults.withCredentials = true;
+        axios.defaults.withXSRFToken = true;
     }
 }
