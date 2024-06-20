@@ -20,6 +20,7 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "angular-svg-icon": "^17.0.0",
     "axios": "^1.7.2",
     "eslint": "^9.5.0",
     "rxjs": "~7.8.0",
