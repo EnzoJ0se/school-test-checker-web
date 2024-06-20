@@ -2,7 +2,7 @@
     <div class="w-8/12 h-5/6 p-6 border-2 rounded-lg shadow-xl">
         <div class="w-full flex justify-between px-1">
             <span class="text-2xl font-bold">Suas Escolas</span>
-            <button class="bg-blue-500 text-white px-2 py-1 rounded-md">Criar Escola</button>
+            <button class="bg-blue-500 text-white px-2 py-1 rounded-md" routerLink="criar">Criar Escola</button>
         </div>
         <div class="mt-4 w-full py-2 border-2 rounded-lg">
             <table class="table w-full">
@@ -28,9 +28,17 @@
                                 <td class="table-cell px-4 pt-2">{{item.name}}</td>
                                 <td class="table-cell px-4 pt-2">{{item.inep_code}}</td>
                                 <td class="table-cell px-4 pt-2">
-                                    <button class="w-full bg-blue-500 px-2 rounded-lg text-white" type="button">
-                                        editar
-                                    </button>
+                                    <div class="flex gap-3">
+                                        <svg-icon src='assets/images/icons/pen-to-square.svg'
+                                            class="flex h-4 fill-current text-blue-500 hover:text-blue-400 cursor-pointer"
+                                            title="Editar" [routerLink]="[item.id, 'editar']">
+                                        </svg-icon>
+
+                                        <svg-icon src='assets/images/icons/x.svg'
+                                            class="flex h-4 fill-current text-red-500 hover:text-red-400 cursor-pointer"
+                                            title="Excluir" (click)="delete(item)">
+                                        </svg-icon>
+                                    </div>
                                 </td>
                             </tr>
                         </ng-template>

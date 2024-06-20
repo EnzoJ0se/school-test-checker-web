@@ -12,6 +12,17 @@ export class SchoolListComponent {
     public schoolResource: SchoolResource = new SchoolResource();
 
     public constructor() {
+        this.refreshTable();
+    }
+
+    public delete(school: SchoolDTO): void {
+        if (school.id) {
+            this.schoolResource.deleteWithConfirmation(school.id);
+            this.refreshTable();
+        }
+    }
+
+    private refreshTable(): void {
         this.loading = true;
         this.schoolResource.get()
             .then((response) => this.schools = response)
