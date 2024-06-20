@@ -65,6 +65,18 @@ export abstract class BaseResource {
         return axios.delete(`${url}/${id}`)
     }
 
+    public deleteWithConfirmation(id: number): void {
+        const response = confirm('Deseja realmente excluir este registro?');
+
+        if (response) {
+            this.delete(id);
+        }
+    }
+
+    public save(data: any): Promise<AxiosResponse> {
+        return data?.id ? this.put(data, data.id) : this.post(data);
+    }
+
     private buildQueryParams(filters: ResourceFilter | null): HttpParams {
         let params = new HttpParams();
 
