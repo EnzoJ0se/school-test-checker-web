@@ -10,9 +10,11 @@ const routes: Routes = [
         component: DefaultPageContainerComponent,
         canActivate: [AuthGuard],
         children: [
-            {path: 'escolas', loadChildren: () => import('./pages/school/school.module').then((m) => m.SchoolModule)},
-            {path: 'home', loadChildren: () => import('./pages/home/home.module').then((m) => m.HomeModule)},
-            {path: '', redirectTo: 'home', pathMatch: 'full'},
+            { path: 'escolas', loadChildren: () => import('./pages/registration/school/school.module').then((m) => m.SchoolModule) },
+            { path: 'salas-de-aula', loadChildren: () => import('./pages/registration/course/course.module').then((m) => m.CourseModule) },
+            { path: 'alunos', loadChildren: () => import('./pages/registration/student/student.module').then((m) => m.StudentModule) },
+            { path: 'home', loadChildren: () => import('./pages/home/home.module').then((m) => m.HomeModule) },
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
         ]
     },
 ];

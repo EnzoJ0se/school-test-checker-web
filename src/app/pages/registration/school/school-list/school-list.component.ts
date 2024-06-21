@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
-import { SchoolResource } from "../../../resources/school/school.resource";
-import { SchoolDTO } from "../../../resources/school/school.dto";
+import { SchoolResource } from "../../../../resources/school/school.resource";
+import { SchoolDTO } from "../../../../resources/school/school.dto";
+import { Title } from "@angular/platform-browser";
 
 @Component({
     selector: 'school-list',
@@ -11,7 +12,8 @@ export class SchoolListComponent {
     public schools: SchoolDTO[] = [];
     public schoolResource: SchoolResource = new SchoolResource();
 
-    public constructor() {
+    public constructor(private title: Title) {
+        this.title.setTitle('Escolas');
         this.refreshTable();
     }
 

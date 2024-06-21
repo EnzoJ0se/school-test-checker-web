@@ -4,8 +4,5 @@ import { SchoolDTO } from "./school.dto";
 
 export class SchoolResource extends BaseResource {
     protected override jsonApi: string = 'schools';
-
-    public override bindData(data: any): SchoolDTO {
-        return new SchoolDTO(data);
-    }
+    public override bindData = (data: any): SchoolDTO => new SchoolDTO(data)
 }
