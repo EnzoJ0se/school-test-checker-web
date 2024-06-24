@@ -1,0 +1,22 @@
+<div class="w-full mt-2 flex justify-center rounded-lg border border-dashed border-gray-400 bg-gray-200">
+    <div class="text-center">
+        <div class="flex w-full justify-center">
+            <svg-icon src='assets/images/icons/images.svg' class="flex fill-current text-gray-600 h-24">
+            </svg-icon>
+        </div>
+        <div class="mt-4 flex text-sm leading-6 text-gray-600">
+            <label for="file-upload"
+                class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
+                <span>Selecione uma ou mais imagens</span>
+                <input id="file-upload" name="file-upload" type="file" class="sr-only" accept="image/png, image/jpeg"
+                    [(ngModel)]="files" (change)="onUploadFiles($event)" multiple>
+            </label>
+            <p class="pl-1">ou arraste e solte</p>
+        </div>
+
+        <p *ngIf="!attachments?.length" class="text-sm leading-5 text-gray-600 font-bold">Nenhum Anexo Selecionado.</p>
+        <p *ngIf="attachments?.length" class="text-sm leading-5 text-gray-600 font-bold">
+            {{attachments?.length}} Anexo(s) Selecionados
+        </p>
+    </div>
+</div>
