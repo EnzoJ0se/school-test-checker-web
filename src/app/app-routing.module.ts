@@ -13,8 +13,12 @@ const routes: Routes = [
             { path: 'escolas', loadChildren: () => import('./pages/registration/school/school.module').then((m) => m.SchoolModule) },
             { path: 'salas-de-aula', loadChildren: () => import('./pages/registration/course/course.module').then((m) => m.CourseModule) },
             { path: 'alunos', loadChildren: () => import('./pages/registration/student/student.module').then((m) => m.StudentModule) },
+            { path: 'avaliacoes', loadChildren: () => import('./pages/registration/test/test.module').then((m) => m.TestModule) },
+            { path: 'correcoes', loadChildren: () => import('./pages/registration/test-resolution/test-resolution.module').then((m) => m.TestResolutionModule) },
+
             { path: 'home', loadChildren: () => import('./pages/home/home.module').then((m) => m.HomeModule) },
             { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: '**', redirectTo: 'home', pathMatch: 'full' },
         ]
     },
 ];

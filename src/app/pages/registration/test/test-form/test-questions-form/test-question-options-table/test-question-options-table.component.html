@@ -1,0 +1,67 @@
+<p class="w-full text-2xl font-bold text-gray-700 text-center my-4 mb-2 border-t-2">Alternativas da Questão</p>
+
+<div class="w-full px-2 mt-3">
+    <table class="table w-full">
+        <thead>
+            <tr class="table-row bg-gray-500 text-white">
+                <th class="table-cell text-start px-4 w-1/12">Correta?</th>
+                <th class="table-cell text-start px-4 w-2/12">Identificador</th>
+                <th class="table-cell text-start px-4 w-8/12">Descrição</th>
+                <th class="table-cell text-start px-4 w-1/12">Ações</th>
+            </tr>
+        </thead>
+        <tbody class="py-2">
+            <tr *ngIf="!testQuestionDTO?.test_question_options?.length; else renderRows" class="table-row border-t">
+                <td class="table-cell px-4 text-center" colspan="6">
+                    nenhum registro encontrado.
+                </td>
+            </tr>
+
+            <ng-template #renderRows>
+                <tr *ngFor="let option of testQuestionDTO?.test_question_options; index as index"
+                    class="table-row border-b py-2">
+                    <td class="table-cell px-4 pt-2">
+                        <input name="is_option_correct_{{uuid}}_{{index}}" type="checkbox"
+                            class="h-4 w-full rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                            [(ngModel)]="option.is_correct">
+                    </td>
+
+                    <td class="table-cell px-4 pt-2">
+                        <select name="option_identifier_{{uuid}}_{{index}}"
+                            class="block w-full bg-white rounded-md border-0 h-9 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            [(ngModel)]="option.identifier">
+                            <option *ngFor="let item of questionOptions" class="py-1.5" [ngValue]="item">
+                                {{item}}
+                            </option>
+                        </select>
+                    </td>
+
+                    <td class="table-cell px-4 pt-2">
+                        <input name="question_option_{{uuid}}_{{index}}" type="string" required
+                            class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            [(ngModel)]="option.description">
+                    </td>
+
+                    <td class="table-cell px-4 pt-2">
+                        <div class="flex gap-3">
+                            <svg-icon src='assets/images/icons/x.svg'
+                                class="flex h-4 fill-current text-red-500 hover:text-red-400 cursor-pointer"
+                                title="Excluir" (click)="removeQuestionOption(testQuestionDTO, index)">
+                            </svg-icon>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+
+            <tr>
+                <td colspan="5">
+                    <button type="button"
+                        class="block w-full mt-3 h-6 justify-center rounded-md bg-indigo-600 px-3 text-xs font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        (click)="addQuestionOption(testQuestionDTO)">
+                        Adicionar Alternativa
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
