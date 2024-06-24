@@ -43,23 +43,23 @@ export abstract class BaseResource {
         return axios.post(url, data);
     }
 
-    public put(data: any, id?: number, endpoint?: string): Promise<AxiosResponse> {
+    public put(data: any, id ?: number, endpoint ?: string): Promise < AxiosResponse > {
         let url = this.bindJsonApi();
 
         url = endpoint ? `${url}/${endpoint}` : url;
 
-        if (id) {
+        if(id) {
             url = `${url}/${id}`;
         }
 
-        if (endpoint) {
+        if(endpoint) {
             url = `${url}/${endpoint}`;
         }
 
         return axios.put(url, data);
     }
 
-    public delete(id: number): Promise<AxiosResponse> {
+    public delete (id: number): Promise < AxiosResponse > {
         const url = this.bindJsonApi();
 
         return axios.delete(`${url}/${id}`)
@@ -68,12 +68,12 @@ export abstract class BaseResource {
     public deleteWithConfirmation(id: number): void {
         const response = confirm('Deseja realmente excluir este registro?');
 
-        if (response) {
+        if(response) {
             this.delete(id);
         }
     }
 
-    public save(data: any): Promise<AxiosResponse> {
+    public save(data: any): Promise < AxiosResponse > {
         return data?.id ? this.put(data, data.id) : this.post(data);
     }
 
