@@ -45,6 +45,12 @@
                                             title="Editar" [routerLink]="[item.id, 'editar']">
                                         </svg-icon>
 
+                                        <svg-icon *ngIf="item.status == 'COMPLETED'"
+                                            src='assets/images/icons/circle-info.svg'
+                                            class="flex h-4 fill-current text-green-500 hover:text-blue-400 cursor-pointer"
+                                            title="Visualizar Resultados" [routerLink]="[item.id, 'resultados']">
+                                        </svg-icon>
+
                                         <svg-icon src='assets/images/icons/x.svg'
                                             class="flex h-4 fill-current text-red-500 hover:text-red-400 cursor-pointer"
                                             title="Excluir" (click)="delete(item)">

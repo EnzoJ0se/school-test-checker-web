@@ -7,17 +7,20 @@ import { AngularSvgIconModule } from "angular-svg-icon";
 import { TestResolutionListComponent } from "./test-resolution-list/test-resolution.list.component";
 import { TestResolutionFormComponent } from "./test-resolution-form/test-resolution.form.component";
 import { DropzoneModule } from "../../../components/dropzone-component/dropzone.module";
+import { TestResolutionResultsPageComponent } from "./test-resolution-results-page/test-resolution-results-page.component";
 
 const routes: Routes = [
     { path: "", component: TestResolutionListComponent },
     { path: "criar", component: TestResolutionFormComponent },
     { path: ":id/editar", component: TestResolutionFormComponent },
+    { path: ":id/resultados", component: TestResolutionResultsPageComponent },
 ];
 
 @NgModule({
     declarations: [
         TestResolutionListComponent,
         TestResolutionFormComponent,
+        TestResolutionResultsPageComponent,
     ],
     exports: [
         RouterModule,
@@ -31,5 +34,5 @@ const routes: Routes = [
         DropzoneModule,
     ],
 })
-export class TestResolutionModule {}
+export class TestResolutionModule { }
 
